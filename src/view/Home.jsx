@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
 import Status from "./status/Status";
-import RecentFollow from "../components/Recent-follow";
+import RecentFollow from "../components/Recent-Follow.jsx";
 
 function Home() {
   return (
