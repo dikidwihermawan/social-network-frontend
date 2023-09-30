@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
-import { authenticated } from "../store";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { IconHome } from "@tabler/icons-react";
+import { authenticated } from "../store";
 
 function Navbar() {
   const redirect = useNavigate();
