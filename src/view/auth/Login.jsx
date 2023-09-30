@@ -2,12 +2,12 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { authenticated } from "../../store";
 
 function Login() {
   const redirect = useNavigate();
-  const [auth, setAuth] = useRecoilState(authenticated);
+  const setAuth = useSetRecoilState(authenticated);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
