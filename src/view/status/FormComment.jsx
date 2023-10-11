@@ -7,7 +7,6 @@ import {
 import { useEffect, useRef, useState } from "react";
 
 function FormComment(props) {
-  console.log(props);
   const textAreaRef = useRef(null);
   const [body, setBody] = useState("");
 

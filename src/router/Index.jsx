@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "../view/Home";
+import Home from "../view/dashboard/Home";
 import Login from "../view/auth/Login";
 import Register from "../view/auth/Register";
 import Navbar from "../components/Navbar";

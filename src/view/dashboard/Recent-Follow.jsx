@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import FollowButton from "./FollowButton";
+import FollowButton from "../../components/FollowButton";
 import axios from "axios";
 import { useRecoilState } from "recoil";
-import { datausers } from "../store/datauser";
+import { datausers } from "../../store/datauser";
 
 function RecentFollow() {
   const [users, setUsers] = useRecoilState(datausers);

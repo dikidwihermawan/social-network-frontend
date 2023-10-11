@@ -10,7 +10,7 @@ import Button from "../../components/Button";
 import { toast } from "react-toastify";
 import { useRecoilState } from "recoil";
 import { authenticated } from "../../store";
-import FormComment from "../../components/FormComment";
+import FormComment from "./FormComment";
 
 function Status() {
   const [auth, setAuth] = useRecoilState(authenticated);
