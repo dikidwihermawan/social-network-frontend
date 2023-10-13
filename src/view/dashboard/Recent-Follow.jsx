@@ -1,43 +1,27 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import FollowButton from "../../components/FollowButton";
 import axios from "axios";
-import { useRecoilState } from "recoil";
-import { datausers } from "../../store/datauser";
+import { useRecoilValue, useRecoilState } from "recoil";
+import { followUser, getAllUser, userFollowing } from "../../store/Users";
 
 function RecentFollow() {
-  const [users, setUsers] = useRecoilState(datausers);
+  const users = useRecoilValue(getAllUser);
+  const followingUser = useRecoilValue(userFollowing);
+  const [follow, setFollow] = useRecoilState(followUser);
 
-  const getUser = async () => {
-    try {
-      let response = await axios.get("users");
-      setUsers({
-        users: response.data,
-      });
-    } catch (e) {
-      console.log(e);
-    }
+  const following = (user) => {
+    setFollow(user);
+    console.log(followingUser);
   };
 
-  const following = async (user) => {
-    try {
-      axios.post("users/following", {
-        username: user,
-      });
-      getUser();
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  useEffect(() => {}, []);
 
-  useEffect(() => {
-    getUser();
-  }, []);
   return (
     <div className="border border-gray-200 rounded shadow-xl px-4 pt-4 py-8 space-y-4">
       <p className="font-semibold">Recently Follows</p>
-      {users.users.length > 0 ? (
+      {users.length > 0 ? (
         <ul className="space-y-8">
-          {users.users.map((user, index) => (
+          {users.map((user, index) => (
             <li key={index}>
               <div className="flex space-x-2 items-center">
                 <img

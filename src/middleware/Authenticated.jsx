@@ -1,11 +1,11 @@
 import { useRecoilValue } from "recoil";
-import { authenticated } from "../store";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { getLoginUser } from "../store/Users";
 
 const Authenticated = ({ children }) => {
   const redirect = useNavigate();
-  const auth = useRecoilValue(authenticated);
+  const auth = useRecoilValue(getLoginUser);
 
   useEffect(() => {
     if (!auth.check) {

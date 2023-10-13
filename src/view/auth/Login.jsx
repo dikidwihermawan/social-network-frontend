@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useSetRecoilState } from "recoil";
-import { authenticated } from "../../store";
+import { getLoginUser } from "../../store/Users";
 
 function Login() {
   const redirect = useNavigate();
-  const setAuth = useSetRecoilState(authenticated);
+  const setAuth = useSetRecoilState(getLoginUser);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);

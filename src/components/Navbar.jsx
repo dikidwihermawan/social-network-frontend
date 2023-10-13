@@ -4,12 +4,12 @@ import { useRecoilState } from "recoil";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { IconHome } from "@tabler/icons-react";
-import { authenticated } from "../store";
+import { getLoginUser } from "../store/Users";
 
 function Navbar() {
   const redirect = useNavigate();
   const [dropdown, setDropdown] = useState(true);
-  const [auth, setAuth] = useRecoilState(authenticated);
+  const [auth, setAuth] = useRecoilState(getLoginUser);
   const show_dropdown = () => {
     setDropdown(!dropdown);
   };

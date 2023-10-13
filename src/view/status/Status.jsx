@@ -8,12 +8,12 @@ import { useEffect, useRef, useState } from "react";
 import moment from "moment";
 import Button from "../../components/Button";
 import { toast } from "react-toastify";
-import { useRecoilState } from "recoil";
-import { authenticated } from "../../store";
+import { useRecoilValue } from "recoil";
 import FormComment from "./FormComment";
+import { getLoginUser } from "../../store/Users";
 
 function Status() {
-  const [auth, setAuth] = useRecoilState(authenticated);
+  const auth = useRecoilValue(getLoginUser);
   const [statuses, setStatuses] = useState([]);
   const [body, setBody] = useState("");
   const textAreaRef = useRef(null);
