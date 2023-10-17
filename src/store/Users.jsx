@@ -1,4 +1,4 @@
-import { atom, selector } from "recoil";
+import { atom, selector, selectorFamily } from "recoil";
 import axios from "axios";
 
 export const authenticated = atom({
@@ -7,6 +7,11 @@ export const authenticated = atom({
     check: false,
     user: [],
   },
+});
+
+export const getUsers = atom({
+  key: "getUsers",
+  default: [],
 });
 
 export const followUser = atom({
@@ -45,7 +50,7 @@ export const getAllUser = selector({
 
 export const userFollowing = selector({
   key: "userFollowing",
-  get: async ({ get }) => {
+  get: ({ get }) => {
     const user = get(followUser);
     try {
       axios.post("users/following", {
@@ -55,7 +60,17 @@ export const userFollowing = selector({
       return false;
     }
   },
-  set: ({ set }, newValue) => {
-    set(getAllUser, newValue);
+  set: ({ set, get }) => {
+    const users = get(getAllUser);
+    set(
+      getAllUser,
+      users.map((user) => {
+        if (user.username === get(followUser))
+          return {
+            ...user,
+            follow: !user.follow,
+          };
+      })
+    );
   },
 });

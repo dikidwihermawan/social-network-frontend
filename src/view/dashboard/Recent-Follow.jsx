@@ -1,20 +1,22 @@
 import { useEffect } from "react";
 import FollowButton from "../../components/FollowButton";
-import axios from "axios";
 import { useRecoilValue, useRecoilState } from "recoil";
 import { followUser, getAllUser, userFollowing } from "../../store/Users";
 
 function RecentFollow() {
   const users = useRecoilValue(getAllUser);
-  const followingUser = useRecoilValue(userFollowing);
   const [follow, setFollow] = useRecoilState(followUser);
+  const [followingUser, setFollowingUser] = useRecoilState(userFollowing);
 
   const following = (user) => {
     setFollow(user);
-    console.log(followingUser);
+    setFollowingUser(users);
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log("users: ", users);
+    console.log("following: ", followingUser);
+  }, [follow, followingUser]);
 
   return (
     <div className="border border-gray-200 rounded shadow-xl px-4 pt-4 py-8 space-y-4">
